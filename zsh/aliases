@@ -1,0 +1,5 @@
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias dev="~/dev"
+alias rp="~/dev/RESTpack"

@@ -1,0 +1,10 @@
+ZSH=$HOME/.oh-my-zsh
+
+# Themes are in ~/.oh-my-zsh/themes/
+ZSH_THEME="robbyrussell"
+
+plugins=(git vi-mode rvm)
+
+source $ZSH/oh-my-zsh.sh
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" #rvm as a function
