@@ -1,7 +1,14 @@
 {
 	"installed_packages":
 	[
+		"Emmet",
+		"Git",
 		"GitGutter",
+		"Handlebars",
+		"HttpStatusCode",
+		"JSLint",
+		"LoremIpsum",
+		"Package Control",
 		"SideBarEnhancements"
 	],
 	"repository_channels":
