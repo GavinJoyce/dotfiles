@@ -5,7 +5,8 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git vi-mode rvm)
 
-bindkey -M vicmd '/' history-incremental-search-backward
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 
 source $ZSH/oh-my-zsh.sh
 
