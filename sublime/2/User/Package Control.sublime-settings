@@ -1,0 +1,10 @@
+{
+	"installed_packages":
+	[
+		"SideBarEnhancements"
+	],
+	"repository_channels":
+	[
+		"https://sublime.wbond.net/repositories.json"
+	]
+}

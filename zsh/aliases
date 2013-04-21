@@ -4,6 +4,7 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 alias dev="~/dev"
 alias rp="~/dev/RestPack"
 alias rps="~/dev/RestPack/restpack-serializer"
+alias dot="~/dev/dotfiles"
 alias zen="~/code/zendesk"
 
 alias h=history
