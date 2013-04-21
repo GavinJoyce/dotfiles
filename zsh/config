@@ -5,6 +5,8 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git vi-mode rvm)
 
+bindkey -M vicmd '/' history-incremental-search-backward
+
 source $ZSH/oh-my-zsh.sh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" #rvm as a function

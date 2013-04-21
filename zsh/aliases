@@ -2,4 +2,14 @@ alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias dev="~/dev"
-alias rp="~/dev/RESTpack"
+alias rp="~/dev/RestPack"
+alias rps="~/dev/RestPack/restpack-serializer"
+alias zen="~/code/zendesk"
+
+alias h=history
+alias sub="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+
+
+#git
+
+alias glol="git log --pretty=oneline --abbrev-commit --graph --decorate"
