@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"GitGutter",
 		"SideBarEnhancements"
 	],
 	"repository_channels":
