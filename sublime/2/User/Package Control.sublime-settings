@@ -6,7 +6,8 @@
 		"Handlebars",
 		"Package Control",
 		"PlainTasks",
-		"SideBarEnhancements"
+		"SideBarEnhancements",
+		"SublimeBlockCursor"
 	],
 	"repository_channels":
 	[
