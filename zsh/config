@@ -8,6 +8,8 @@ plugins=(git vi-mode rvm)
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 
+KEYTIMEOUT=1
+
 source $ZSH/oh-my-zsh.sh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" #rvm as a function
