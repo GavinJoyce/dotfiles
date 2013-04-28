@@ -1,13 +1,13 @@
 [
   {
-    "keys": ["ctrl+alt+right"],
+    "keys": ["super+alt+right"],
     "command": "run_multiple_commands",
     "args": {
       "commands": [
         {
           "command": "set_layout", "context": "window",
           "args": {
-            "cols": [0.0, 0.33, 1.0],
+            "cols": [0.0, 0.3, 1.0],
             "rows": [0.0, 1.0],
             "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
           }
@@ -18,14 +18,14 @@
     }
   },
   {
-    "keys": ["ctrl+alt+left"],
+    "keys": ["super+alt+left"],
     "command": "run_multiple_commands",
     "args": {
       "commands": [
         {
           "command": "set_layout", "context": "window",
           "args": {
-            "cols": [0.0, 0.66, 1.0],
+            "cols": [0.0, 0.70, 1.0],
             "rows": [0.0, 1.0],
             "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
           }
@@ -73,7 +73,7 @@
     }
   },
   {
-    "keys": ["ctrl+alt+up"],
+    "keys": ["super+alt+up"],
     "command": "set_layout",
     "args":
     {
@@ -84,6 +84,26 @@
   },
   {
     "keys": ["super+ctrl+up"],
+    "command": "set_layout",
+    "args":
+    {
+      "cols": [0.0, 0.5, 1.0],
+      "rows": [0.0, 1.0],
+      "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+    }
+  },
+  {
+    "keys": ["super+alt+down"],
+    "command": "set_layout",
+    "args":
+    {
+      "cols": [0.0, 0.5, 1.0],
+      "rows": [0.0, 1.0],
+      "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+    }
+  },
+  {
+    "keys": ["super+ctrl+down"],
     "command": "set_layout",
     "args":
     {
