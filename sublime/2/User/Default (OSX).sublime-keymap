@@ -9,51 +9,16 @@
       ]
     }
   },
+
   {
-    "keys": ["super+alt+right"],
+    "keys": ["super+alt+h"],
     "command": "run_multiple_commands",
     "args": {
       "commands": [
         {
           "command": "set_layout", "context": "window",
           "args": {
-            "cols": [0.0, 0.3, 1.0],
-            "rows": [0.0, 1.0],
-            "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
-          }
-        },
-        {"command": "focus_group", "args": { "group": 1 }, "context": "window" },
-        {"command": "exit_insert_mode", "context": "window"}
-      ]
-    }
-  },
-  {
-    "keys": ["super+alt+down"],
-    "command": "run_multiple_commands",
-    "args": {
-      "commands": [
-        {
-          "command": "set_layout", "context": "window",
-          "args": {
-            "cols": [0.0, 0.5, 1.0],
-            "rows": [0.0, 1.0],
-            "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
-          }
-        },
-        {"command": "focus_group", "args": { "group": 1 }, "context": "window" },
-        {"command": "exit_insert_mode", "context": "window"}
-      ]
-    }
-  },
-  {
-    "keys": ["super+alt+left"],
-    "command": "run_multiple_commands",
-    "args": {
-      "commands": [
-        {
-          "command": "set_layout", "context": "window",
-          "args": {
-            "cols": [0.0, 0.70, 1.0],
+            "cols": [0.0, 0.90, 1.0],
             "rows": [0.0, 1.0],
             "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
           }
@@ -63,15 +28,16 @@
       ]
     }
   },
+
   {
-    "keys": ["super+alt+up"],
+    "keys": ["super+alt+j"],
     "command": "run_multiple_commands",
     "args": {
       "commands": [
         {
           "command": "set_layout", "context": "window",
           "args": {
-            "cols": [0.0, 0.5, 1.0],
+            "cols": [0.0, 0.55, 1.0],
             "rows": [0.0, 1.0],
             "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
           }
@@ -81,15 +47,16 @@
       ]
     }
   },
+
   {
-    "keys": ["super+ctrl+right"],
+    "keys": ["super+alt+k"],
     "command": "run_multiple_commands",
     "args": {
       "commands": [
         {
           "command": "set_layout", "context": "window",
           "args": {
-            "cols": [0.0, 0.20, 1.0],
+            "cols": [0.0, 0.45, 1.0],
             "rows": [0.0, 1.0],
             "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
           }
@@ -99,15 +66,16 @@
       ]
     }
   },
+
   {
-    "keys": ["super+ctrl+down"],
+    "keys": ["super+alt+l"],
     "command": "run_multiple_commands",
     "args": {
       "commands": [
         {
           "command": "set_layout", "context": "window",
           "args": {
-            "cols": [0.0, 0.5, 1.0],
+            "cols": [0.0, 0.10, 1.0],
             "rows": [0.0, 1.0],
             "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
           }
@@ -117,42 +85,7 @@
       ]
     }
   },
-  {
-    "keys": ["super+ctrl+left"],
-    "command": "run_multiple_commands",
-    "args": {
-      "commands": [
-        {
-          "command": "set_layout", "context": "window",
-          "args": {
-            "cols": [0.0, 0.80, 1.0],
-            "rows": [0.0, 1.0],
-            "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
-          }
-        },
-        {"command": "focus_group", "args": { "group": 0 }, "context": "window" },
-        {"command": "exit_insert_mode", "context": "window"}
-      ]
-    }
-  },
-  {
-    "keys": ["super+ctrl+up"],
-    "command": "run_multiple_commands",
-    "args": {
-      "commands": [
-        {
-          "command": "set_layout", "context": "window",
-          "args": {
-            "cols": [0.0, 0.5, 1.0],
-            "rows": [0.0, 1.0],
-            "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
-          }
-        },
-        {"command": "focus_group", "args": { "group": 0 }, "context": "window" },
-        {"command": "exit_insert_mode", "context": "window"}
-      ]
-    }
-  },
+
   { "keys": ["ctrl+alt+1"], "command": "move_to_group", "args": { "group": 0 } },
   { "keys": ["ctrl+alt+2"], "command": "move_to_group", "args": { "group": 1 } },
   { "keys": ["ctrl+alt+3"], "command": "move_to_group", "args": { "group": 2 } },
@@ -161,5 +94,4 @@
   { "keys": ["super+ctrl+2"], "command": "move_to_group", "args": { "group": 1 } },
   { "keys": ["super+ctrl+3"], "command": "move_to_group", "args": { "group": 2 } },
   { "keys": ["super+ctrl+4"], "command": "move_to_group", "args": { "group": 3 } }
-
 ]
