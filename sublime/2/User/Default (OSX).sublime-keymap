@@ -1,5 +1,17 @@
 [
   {
+    "keys": ["super+s"],
+    "command": "run_multiple_commands",
+    "args": {
+      "commands": [
+        {
+          "command": "save", "context": "window"
+        },
+        {"command": "exit_insert_mode", "context": "window"}
+      ]
+    }
+  },
+  {
     "keys": ["super+alt+right"],
     "command": "run_multiple_commands",
     "args": {
