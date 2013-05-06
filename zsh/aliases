@@ -1,4 +1,4 @@
-alias dot="sub ~/dev/dotfiles"
+alias dot="~/dev/dotfiles"
 alias dev="~/dev"
 alias rp="~/dev/RestPack"
 alias rps="~/dev/RestPack/restpack-serializer"
