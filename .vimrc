@@ -10,3 +10,6 @@ filetype plugin indent on
 
 map <C-n> :NERDTreeToggle<CR>
 
+
+:hi LineNr ctermfg=darkcyan ctermbg=black
+
