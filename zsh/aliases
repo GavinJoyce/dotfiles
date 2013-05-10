@@ -9,7 +9,6 @@ alias reload="source ~/.zshrc"
 alias r!='reload'
 alias sub="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 
-alias be="bundle exec"
 
 alias glol="git log --pretty=oneline --abbrev-commit --graph --decorate"
 alias gll="glol"
@@ -19,4 +18,19 @@ alias s="git status"
 alias ss="git status --short"
 alias d="git diff"
 alias gcob="git checkout -B"
+
+function fsha() {
+	if [[ "$@" != "" ]]; then
+    for hash in $@;do
+      echo $hash;
+      git branch -a --contains $hash | grep 'master\|staging\|production';\
+    done;
+  else
+    echo "You must give a hash argument.";
+  fi
+}
+
+
 alias b2a3="bundle --local && BUNDLE_GEMFILE=Gemfile.rails3 bundle --local"
+alias b2="bundle --local"
+alias be="bundle exec"
