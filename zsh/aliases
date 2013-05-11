@@ -19,6 +19,7 @@ alias s="git status"
 alias ss="git status --short"
 alias d="git diff"
 alias gcob="git checkout -B"
+alias gcom="git checkout master"
 
 function fsha() {
 	if [[ "$@" != "" ]]; then
