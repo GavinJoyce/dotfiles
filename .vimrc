@@ -13,7 +13,7 @@ syntax on
 filetype on
 filetype indent on
 filetype plugin on
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+"autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 set shiftwidth=2
 set tabstop=2
@@ -32,3 +32,5 @@ nmap <silent> <c-l> :wincmd l<CR>
 let g:EasyMotion_leader_key = '<Leader>'
 let g:EasyMotion_do_shade = 0
 hi link EasyMotionTarget ErrorMsg
+
+let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
