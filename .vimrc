@@ -3,7 +3,8 @@ execute pathogen#helptags()
 
 let mapleader=" "
 
-colorscheme twilight256
+colorscheme Monokai
+
 set relativenumber
 set visualbell
 
@@ -26,5 +27,8 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-:hi LineNr ctermfg=darkcyan ctermbg=black
+":hi LineNr ctermfg=darkcyan ctermbg=black
 
+let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_do_shade = 0
+hi link EasyMotionTarget ErrorMsg
