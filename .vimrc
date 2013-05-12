@@ -1,6 +1,8 @@
 execute pathogen#infect()
 execute pathogen#helptags()
 
+let mapleader=" "
+
 colorscheme twilight256
 set relativenumber
 set visualbell

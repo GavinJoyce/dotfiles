@@ -20,6 +20,7 @@ alias ss="git status --short"
 alias d="git diff"
 alias gcob="git checkout -B"
 alias gcom="git checkout master"
+alias gphm="git push heroku master"
 
 function fsha() {
 	if [[ "$@" != "" ]]; then
