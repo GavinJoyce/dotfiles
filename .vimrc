@@ -24,8 +24,15 @@ set tabstop=2
 set softtabstop=2
 
 map <C-n> :NERDTreeToggle<CR>
+
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_by_filename = 1
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-v>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("v")': ['<cr>', '<RightMouse>'],
+    \ }
+map <leader>x <C-w>x
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gem     " Linux/MacOSX
 
 nnoremap <leader>s <C-w>v<C-w>l
 
