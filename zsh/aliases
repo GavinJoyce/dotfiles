@@ -2,6 +2,7 @@ alias dot="~/dev/dotfiles"
 alias dev="~/dev"
 alias rp="~/dev/RestPack"
 alias rps="~/dev/RestPack/restpack-serializer"
+alias zvc="~/code/zendesk/zendesk_voice_core"
 
 alias hs=history
 alias h="cd ~/"
@@ -24,13 +25,13 @@ alias gphm="git push heroku master"
 
 function fsha() {
 	if [[ "$@" != "" ]]; then
-    for hash in $@;do
-      echo $hash;
-      git branch -a --contains $hash | grep 'master\|staging\|production';\
-    done;
-  else
-    echo "You must give a hash argument.";
-  fi
+		for hash in $@;do
+			echo $hash;
+	git branch -a --contains $hash | grep 'master\|staging\|production';\
+		done;
+	else
+		echo "You must give a hash argument.";
+	fi
 }
 
 
