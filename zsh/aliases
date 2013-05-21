@@ -23,6 +23,10 @@ alias gcob="git checkout -B"
 alias gcom="git checkout master"
 alias gphm="git push heroku master"
 
+alias csha="~/dev/dotfiles/scripts/csha.rb"
+alias cbn="~/dev/dotfiles/scripts/cbn.rb"
+alias fsha1="~/dev/dotfiles/scripts/fsha.rb"
+
 function fsha() {
 	if [[ "$@" != "" ]]; then
 		for hash in $@;do
@@ -38,3 +42,4 @@ function fsha() {
 alias b2a3="bundle --local && BUNDLE_GEMFILE=Gemfile.rails3 bundle --local"
 alias b2="bundle --local"
 alias be="bundle exec"
+
