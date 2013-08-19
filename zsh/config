@@ -13,3 +13,6 @@ KEYTIMEOUT=1
 source $ZSH/oh-my-zsh.sh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" #rvm as a function
+
+unsetopt correct
+unsetopt correct_all
