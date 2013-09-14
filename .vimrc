@@ -1,14 +1,28 @@
 set nocompatible
+filetype off
 
-execute pathogen#infect()
-execute pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-" Quickly edit/reload the vimrc file
+Bundle 'gmarik/vundle'
+
+Bundle 'kien/ctrlp.vim'
+Bundle 'roman/golden-ratio'
+
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+
+filetype plugin indent on     " required!
 
 let mapleader=","
 
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
+set t_Co=256
 colorscheme Monokai
 
 set relativenumber
