@@ -18,3 +18,5 @@ CTRL-p: https://github.com/kien/ctrlp.vim
 
 ,ev: Edit .vimrc
 
+10,cc: comment 10 lines
+10,cu: uncomment 10 lines
