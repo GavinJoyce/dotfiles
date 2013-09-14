@@ -6,3 +6,14 @@ Sublime Text:
 
 mv ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User UserOLD
 ln -s ~/dev/dotfiles/sublime/2/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+
+
+VIM Commands:
+-------------
+
+CTRL-n: NERDTreeToggle
+CTRL-p: https://github.com/kien/ctrlp.vim
+
+
+,ev: Edit .vimrc
+
