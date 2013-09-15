@@ -10,7 +10,7 @@ alias reload="source ~/.zshrc"
 alias r!='reload'
 alias sub="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 alias v="vim"
-
+alias c="clear"
 
 alias glol="git log --pretty=oneline --abbrev-commit --graph --decorate"
 alias gll="glol"
