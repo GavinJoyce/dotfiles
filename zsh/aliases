@@ -25,7 +25,6 @@ alias gphm="git push heroku master"
 
 alias csha="~/dev/dotfiles/scripts/csha.rb"
 alias cbn="~/dev/dotfiles/scripts/cbn.rb"
-alias fsha1="~/dev/dotfiles/scripts/fsha.rb"
 
 function fsha() {
 	if [[ "$@" != "" ]]; then
