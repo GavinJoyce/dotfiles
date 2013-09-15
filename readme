@@ -20,3 +20,12 @@ CTRL-p: https://github.com/kien/ctrlp.vim
 
 10,cc: comment 10 lines
 10,cu: uncomment 10 lines
+
+ZSH Commands:
+-------------
+
+mk: mkdir and cd
+
+csha: copy git SHA
+cbn: copy git branch name
+fsha <SHA>: find sha in
