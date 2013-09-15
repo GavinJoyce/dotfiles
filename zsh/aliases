@@ -38,6 +38,15 @@ function fsha() {
 	fi
 }
 
+function mk() {
+  if [ ! -n "$1" ]; then
+    echo "Enter a directory name"
+	elif [ -d $1 ]; then
+    echo "\`$1' already exists"
+  else
+    mkdir $1 && cd $1
+  fi
+}
 
 alias b2a3="bundle --local && BUNDLE_GEMFILE=Gemfile.rails3 bundle --local"
 alias b2="bundle --local"
