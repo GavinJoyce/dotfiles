@@ -2,7 +2,8 @@ alias dot="~/dev/dotfiles"
 alias dev="~/dev"
 alias rp="~/dev/RestPack"
 alias rps="~/dev/RestPack/restpack-serializer"
-alias zvc="~/code/zendesk/zendesk_voice_core"
+alias io="~/dev/intercom/intercom"
+alias ioc="~/dev/intercom/intercom-core"
 
 alias hs=history
 alias h="cd ~/"
