@@ -21,6 +21,12 @@ CTRL-p: https://github.com/kien/ctrlp.vim
 10,cc: comment 10 lines
 10,cu: uncomment 10 lines
 
+`,grf` git rebase fixup - replace all but first `pick` to `fixup`
+`,fgrf` force git rebase fixup
+
+`,grs` git rebase squash - replace all but first `pick` to `squash`
+`,fgrs` force git rebase squash
+
 ZSH Commands:
 -------------
 

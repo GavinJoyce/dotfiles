@@ -20,7 +20,20 @@ filetype plugin indent on     " required!
 
 let mapleader=","
 
+" ,ev : open this file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
+:map <leader>ea :e ~/dev/dotfiles/zsh/aliases<CR>
+:map <leader>el :e ~/dev/dotfiles/learning.txt<CR>
+
+" ,rf : "rebase fix" replace pick with fixup for all but 1st in git rebase interactive
+:map <leader>rf :2,$s/^pick/fixup/<CR>
+:map <leader>frf <leader>rf<CR>:wq<CR>
+
+" ,rs : "rebase squash"
+:map <leader>rs :2,$s/^pick/squash/<CR>
+:map <leader>frs <leader>r1<CR>:wq<CR>
+
+
 
 set t_Co=256
 colorscheme Monokai
