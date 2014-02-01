@@ -4,15 +4,24 @@ alias rp="~/dev/RestPack"
 alias rps="~/dev/RestPack/restpack-serializer"
 alias io="~/dev/intercom/intercom"
 alias ioc="~/dev/intercom/intercom-core"
+alias iog="~/dev/intercom/intercom-gem"
+alias ioi="~/dev/intercom/intercom-instrumentation"
+alias iot="~/dev/intercom/intercom-testing"
+alias iou="~/dev/intercom/intercom-user-service"
 
 alias hs=history
 alias h="cd ~/"
 alias reload="source ~/.zshrc"
 alias r!='reload'
+alias r1='reload'
+alias c="clear"
+
 alias sub="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 alias v="vim"
-alias c="clear"
+
 alias st="rake start"
+alias rt="rake -T"
+alias rtg="rake -T | grep"
 
 alias glol="git log --pretty=oneline --abbrev-commit --graph --decorate"
 alias gll="glol"
@@ -24,6 +33,10 @@ alias d="git diff"
 alias gcob="git checkout -B"
 alias gcom="git checkout master"
 alias gphm="git push heroku master"
+alias grm="git rebase -i master"
+alias ga="git add . && gst"
+alias gcm="git commit -m"
+alias gac="git add . && git commit -m"
 
 alias csha="~/dev/dotfiles/scripts/csha.rb"
 alias cbn="~/dev/dotfiles/scripts/cbn.rb"
@@ -49,7 +62,7 @@ function mk() {
   fi
 }
 
-alias b2a3="bundle --local && BUNDLE_GEMFILE=Gemfile.rails3 bundle --local"
 alias b2="bundle --local"
+alias bl="bundle --local"
 alias be="bundle exec"
 
