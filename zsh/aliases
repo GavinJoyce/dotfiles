@@ -49,6 +49,7 @@ alias ga="git add . && gst"
 alias gcm="git commit -m"
 
 gac() { git add . && git commit -m "$*" }
+gacp() { git add . && git commit -m "$*" && git push }
 gaf() { git add . && git commit -am "fixup! $*" }
 gas() { git add . && git commit -am "squash! $*" }
 
