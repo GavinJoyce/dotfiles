@@ -21,6 +21,10 @@ alias c="clear"
 alias sub="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 alias v="vim"
 
+alias ,ev="vim -c \"execute 'normal ,ev'\""
+alias ,el="vim -c \"execute 'normal ,el'\""
+alias ,ea="vim -c \"execute 'normal ,ea'\""
+
 alias st="rake start"
 alias rt="rake -T"
 alias rtg="rake -T | grep"
@@ -29,8 +33,8 @@ alias glol="git log --pretty=oneline --abbrev-commit --graph --decorate"
 alias gll="glol"
 alias grl="git reflog"
 alias gst="echo NOPE!!! use 's' instead"
-alias s="git status"
-alias ss="git status --short"
+alias s="git status --short"
+alias ss="git status"
 alias d="git diff"
 alias dc="git diff --cached"
 alias gcob="git checkout -B"
@@ -43,9 +47,12 @@ alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias ga="git add . && gst"
 alias gcm="git commit -m"
-alias gac="git add . && git commit -m"
-alias gaf="git add . && git commit -m 'fixup!'"
-alias gas="git add . && git commit -m 'squash!'"
+
+gac() { git add . && git commit -m "$*" }
+gaf() { git add . && git commit -am "fixup! $*" }
+gas() { git add . && git commit -am "squash! $*" }
+
+
 
 alias csha="~/dev/dotfiles/scripts/csha.rb"
 alias cbn="~/dev/dotfiles/scripts/cbn.rb"

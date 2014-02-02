@@ -24,6 +24,7 @@ let mapleader=","
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 :map <leader>ea :e ~/dev/dotfiles/zsh/aliases<CR>
 :map <leader>el :e ~/dev/dotfiles/learning.txt<CR>
+:map <leader>q :q<CR>
 
 " ,rf : "rebase fix" replace pick with fixup for all but 1st in git rebase interactive
 :map <leader>rf :2,$s/^pick/fixup/<CR>

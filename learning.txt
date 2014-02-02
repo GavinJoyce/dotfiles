@@ -3,3 +3,9 @@ go     => git checkout -
 gra    => git rebase continue
 grc    => git rebase abort
 gac    => git add . && git commit -m
+
+VIM:
+
+,rf   => rebase fixup all except first line
+,frf  => force rebase fixup
+
