@@ -11,6 +11,8 @@ alias ioi="~/dev/intercom/intercom-instrumentation"
 alias iot="~/dev/intercom/intercom-testing"
 alias iou="~/dev/intercom/intercom-user-service"
 
+alias buios="bundle update intercom-user-service"
+
 alias hs=history
 alias h="cd ~/"
 alias reload="source ~/.zshrc"
