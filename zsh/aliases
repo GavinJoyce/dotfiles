@@ -49,6 +49,7 @@ alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias ga="git add . && gst"
 alias gcm="git commit -m"
+alias gbc="git branch --merged master | grep -v master | xargs git branch -d"
 
 gac() { git add . && git commit -m "$*" }
 gacp() { git add . && git commit -m "$*" && git push }
