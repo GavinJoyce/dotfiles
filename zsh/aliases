@@ -51,9 +51,9 @@ alias ga="git add . && gst"
 alias gcm="git commit -m"
 alias gbc="git branch --merged master | grep -v master | xargs git branch -d"
 alias gpf="git push --force"
+alias gs="git show"
 
 gac() { git add . && git commit -m "$*" }
-gacp() { git add . && git commit -m "$*" && git push }
 gaf() { git add . && git commit -am "fixup! $*" }
 gas() { git add . && git commit -am "squash! $*" }
 
