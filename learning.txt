@@ -1,11 +1,19 @@
 ----- LEARN THESE:
-go     => git checkout -
-gra    => git rebase continue
-grc    => git rebase abort
-gac    => git add . && git commit -m
 
-VIM:
+COMMAND SHIFT 4 - Screenshot a selected area
+COMMAND SHIFT 3 - Whole desktop
 
-,rf   => rebase fixup all except first line
-,frf  => force rebase fixup
+
+---- Chrome Dev Tools
+
+http://anti-code.com/devtools-cheatsheet/
+
+OPENING
+
+CMD+ALT+J = Console
+CMD+ALT+I = Toggle Dev Tools
+CMD+ALT+C = Select and inspect element
+
+
+--- OLD
 

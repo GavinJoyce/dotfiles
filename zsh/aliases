@@ -10,7 +10,7 @@ alias iog="~/dev/intercom/intercom-gem"
 alias ioi="~/dev/intercom/intercom-instrumentation"
 alias iot="~/dev/intercom/intercom-testing"
 alias iou="~/dev/intercom/intercom-user-service"
-
+alias em="~/dev/intercom/embercom"
 alias buios="bundle update intercom-user-service"
 
 alias hs=history
@@ -52,6 +52,9 @@ alias gcm="git commit -m"
 alias gbc="git branch --merged master | grep -v master | xargs git branch -d"
 alias gpf="git push --force"
 alias gs="git show"
+alias spruce="git branch --merged master | grep -v 'master' | xargs -n 1 git branch -d"
+alias gpine="spruce"
+alias asdf="python -m SimpleHTTPServer"
 
 gac() { git add . && git commit -m "$*" }
 gaf() { git add . && git commit -am "fixup! $*" }
