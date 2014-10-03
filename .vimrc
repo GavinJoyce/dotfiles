@@ -1,3 +1,5 @@
+set shell=zsh\ -i
+
 set nocompatible
 filetype off
 

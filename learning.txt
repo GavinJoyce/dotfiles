@@ -14,6 +14,6 @@ CMD+ALT+J = Console
 CMD+ALT+I = Toggle Dev Tools
 CMD+ALT+C = Select and inspect element
 
+---- Atom Editor
 
---- OLD
 
