@@ -5,6 +5,7 @@ alias dev="~/dev"
 alias os="~/dev/opensource"
 alias rp="~/dev/RestPack"
 alias rps="~/dev/RestPack/restpack-serializer"
+alias i="~/dev/intercom"
 alias io="~/dev/intercom/intercom"
 alias ioc="~/dev/intercom/intercom-core"
 alias iog="~/dev/intercom/intercom-gem"
@@ -12,6 +13,7 @@ alias ioi="~/dev/intercom/intercom-instrumentation"
 alias iot="~/dev/intercom/intercom-testing"
 alias iou="~/dev/intercom/intercom-user-service"
 alias em="~/dev/intercom/embercom"
+alias emc="~/dev/intercom/embercom-composer"
 alias buios="bundle update intercom-user-service"
 
 alias hs=history
@@ -20,8 +22,11 @@ alias reload="source ~/.zshrc"
 alias r!='reload'
 alias r1='reload'
 alias c="clear"
+alias er="ember server"
 
 alias sub="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
+alias a="atom ."
 alias v="vim"
 
 alias ,ev="vim -c \"execute 'normal ,ev'\""
