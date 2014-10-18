@@ -24,7 +24,6 @@ alias r1='reload'
 alias c="clear"
 alias er="ember server"
 
-alias sub="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
 alias a="atom ."
 alias v="vim"
@@ -36,6 +35,7 @@ alias ,ea="vim -c \"execute 'normal ,ea'\""
 alias st="rake start"
 alias rt="rake -T"
 alias rtg="rake -T | grep"
+alias re="rbenv"
 
 alias glol="git log --pretty=oneline --abbrev-commit --graph --decorate"
 alias gll="glol"
@@ -96,4 +96,3 @@ function mk() {
 alias b2="bundle --local"
 alias bl="bundle --local"
 alias be="bundle exec"
-
