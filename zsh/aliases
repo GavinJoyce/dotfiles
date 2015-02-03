@@ -74,6 +74,7 @@ function hr { printf '=%.0s' $(seq $COLUMNS); }
 
 alias csha="~/dev/dotfiles/scripts/csha.rb"
 alias cbn="~/dev/dotfiles/scripts/cbn.rb"
+alias statsd="~/dev/dotfiles/scripts/statsd.rb"
 
 function fsha() {
 	if [[ "$@" != "" ]]; then
