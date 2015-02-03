@@ -23,6 +23,9 @@ alias r!='reload'
 alias r1='reload'
 alias c="clear"
 alias er="ember server"
+alias ni="npm install"
+alias bi="bower install"
+alias nbi="npm install && bower install"
 
 alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
 alias a="atom ."

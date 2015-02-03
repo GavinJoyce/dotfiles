@@ -1,9 +1,25 @@
-'global':
-  'editor': {}
-  'core': {}
-  'exception-reporting':
-    'userId': '19b1f3d0-18f9-c954-9bca-45ac459cb789'
-  'welcome':
-    'showOnStartup': false
-  'metrics':
-    'userId': 'aace16df451cca25cd2102dba3b487694573eba2'
+"*":
+  "exception-reporting":
+    userId: "19b1f3d0-18f9-c954-9bca-45ac459cb789"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "aace16df451cca25cd2102dba3b487694573eba2"
+  core:
+    disabledPackages: [
+      "git-history"
+      "git-diff"
+    ]
+    themes: [
+      "seti-ui"
+      "seti-monokai"
+    ]
+  editor:
+    fontSize: 14
+    invisibles: {}
+metrics:
+  userId: "9d9e20efdc9ec6944c5664feae4ea8b850e337aa"
+welcome:
+  showOnStartup: false
+"exception-reporting":
+  userId: "08c92d5f-8c72-e1d8-a200-a0f8f3230224"
