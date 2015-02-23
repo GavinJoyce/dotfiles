@@ -26,9 +26,12 @@ alias er="ember server"
 alias ni="npm install"
 alias bi="bower install"
 alias nbi="npm install && bower install"
+alias emz="rm -rf node_modules bower_components && npm install && bower update"
+alias mcp="muster console production"
 
-alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
+alias atom="/opt/homebrew-cask/Caskroom/atom/latest/Atom.app/Contents/Resources/app/atom.sh"
 alias a="atom ."
+alias apm="/usr/local/bin/apm"
 alias v="vim"
 
 alias ,ev="vim -c \"execute 'normal ,ev'\""
