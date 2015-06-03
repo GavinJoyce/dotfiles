@@ -15,6 +15,7 @@ alias iou="~/dev/intercom/intercom-user-service"
 alias em="~/dev/intercom/embercom"
 alias emc="~/dev/intercom/embercom-composer"
 alias buios="bundle update intercom-user-service"
+alias ber="bundle exec rspec"
 
 alias hs=history
 alias h="cd ~/"
@@ -27,6 +28,7 @@ alias ni="npm install"
 alias bi="bower install"
 alias nbi="npm install && bower install"
 alias emz="rm -rf node_modules bower_components && npm install && bower update"
+alias emzr="emz && er"
 alias mcp="muster console production"
 
 alias atom="/opt/homebrew-cask/Caskroom/atom/latest/Atom.app/Contents/Resources/app/atom.sh"
