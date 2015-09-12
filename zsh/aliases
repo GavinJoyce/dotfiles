@@ -17,6 +17,8 @@ alias emc="~/dev/intercom/embercom-composer"
 alias buios="bundle update intercom-user-service"
 alias ber="bundle exec rspec"
 
+alias rc="rustc"
+
 alias hs=history
 alias h="cd ~/"
 alias reload="source ~/.zshrc"
@@ -31,14 +33,17 @@ alias emz="rm -rf node_modules bower_components && npm install && bower update"
 alias emzr="emz && er"
 alias mcp="muster console production"
 
-alias atom="/opt/homebrew-cask/Caskroom/atom/latest/Atom.app/Contents/Resources/app/atom.sh"
+alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
 alias a="atom ."
+
 alias apm="/usr/local/bin/apm"
 alias v="vim"
 
 alias ,ev="vim -c \"execute 'normal ,ev'\""
 alias ,el="vim -c \"execute 'normal ,el'\""
 alias ,ea="vim -c \"execute 'normal ,ea'\""
+alias ,aa="atom ~/dev/intercom/embercom ~/dev/intercom/intercom ~/dev/intercom/embercom-composer ~/dev/intercom/embercom-computed-properties"
+alias ,ae="atom ~/dev/intercom/embercom"
 
 alias st="rake start"
 alias rt="rake -T"
