@@ -74,6 +74,7 @@ alias gpf="git push --force"
 alias gs="git show"
 alias spruce="git branch --merged master | grep -v 'master' | xargs -n 1 git branch -d"
 alias gpine="spruce"
+alias gum="git pull upstream master && git push"
 alias asdf="python -m SimpleHTTPServer"
 
 gac() { git add . && git commit -m "$*" }
