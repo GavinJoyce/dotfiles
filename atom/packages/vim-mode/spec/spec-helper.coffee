@@ -3,24 +3,34 @@ GlobalVimState = require '../lib/global-vim-state'
 VimMode  = require '../lib/vim-mode'
 StatusBarManager = require '../lib/status-bar-manager'
 
+[globalVimState, statusBarManager] = []
+
 beforeEach ->
   atom.workspace ||= {}
+  statusBarManager = null
+  globalVimState = null
+  spyOn(atom, 'beep')
 
 getEditorElement = (callback) ->
   textEditor = null
 
   waitsForPromise ->
-    atom.project.open().then (e) ->
+    atom.workspace.open().then (e) ->
       textEditor = e
 
   runs ->
-    element = document.createElement("atom-text-editor")
-    element.setModel(textEditor)
+    element = atom.views.getView(textEditor)
+    element.setUpdatedSynchronously(true)
     element.classList.add('vim-mode')
-    element.vimState = new VimState(element, new StatusBarManager, new GlobalVimState)
+    statusBarManager ?= new StatusBarManager
+    globalVimState ?= new GlobalVimState
+    element.vimState = new VimState(element, statusBarManager, globalVimState)
 
     element.addEventListener "keydown", (e) ->
       atom.keymaps.handleKeyboardEvent(e)
+
+    # mock parent element for the text editor
+    document.createElement("html").appendChild(element)
 
     callback(element)
 
@@ -45,10 +55,10 @@ dispatchTextEvent = (target, eventArgs...) ->
   target.dispatchEvent e
 
 keydown = (key, {element, ctrl, shift, alt, meta, raw}={}) ->
-  key = "U+#{key.charCodeAt(0).toString(16)}" unless key == 'escape' || raw?
+  key = "U+#{key.charCodeAt(0).toString(16)}" unless key is 'escape' or raw?
   element ||= document.activeElement
   eventArgs = [
-    true, # bubbles
+    false, # bubbles
     true, # cancelable
     null, # view
     key,  # key
@@ -59,8 +69,8 @@ keydown = (key, {element, ctrl, shift, alt, meta, raw}={}) ->
   canceled = not dispatchKeyboardEvent(element, 'keydown', eventArgs...)
   dispatchKeyboardEvent(element, 'keypress', eventArgs...)
   if not canceled
-     if dispatchTextEvent(element, 'textInput', eventArgs...)
-       element.value += key
+    if dispatchTextEvent(element, 'textInput', eventArgs...)
+      element.value += key
   dispatchKeyboardEvent(element, 'keyup', eventArgs...)
 
-module.exports = { keydown, getEditorElement, mockPlatform, unmockPlatform }
+module.exports = {keydown, getEditorElement, mockPlatform, unmockPlatform}

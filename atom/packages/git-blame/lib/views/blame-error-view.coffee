@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{View} = require 'atom-space-pen-views'
 
 module.exports =
 class BlameErrorView extends View
@@ -14,4 +14,4 @@ class BlameErrorView extends View
     this.remove();
 
   attach: ->
-    atom.workspaceView.append(this)
+    atom.workspace.addTopPanel(item: this)

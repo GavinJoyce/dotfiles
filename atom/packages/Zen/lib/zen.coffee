@@ -1,91 +1,185 @@
-module.exports =
-  configDefaults:
-    fullscreen: false
-    hideTabs: true
-    width: atom.config.get 'editor.preferredLineLength'
+$ = require 'jquery'
+# jquery used only to manipulate editor width
+# we'd rather move away from this dependency than expand on it
 
-  unSoftWrap: false
-  showTreeView: false
-  oldWidth: null
-  paneChanged: null
+module.exports =
+  config:
+    fullscreen:
+      type: 'boolean'
+      default: true
+      order: 1
+    softWrap:
+      description: 'Enables / Disables soft wrapping when Zen is active.'
+      type: 'boolean'
+      default: atom.config.get 'editor.softWrap'
+      order: 2
+    gutter:
+      description: 'Shows / Hides the gutter when Zen is active.'
+      type: 'boolean'
+      default: false
+      order: 3
+    typewriter:
+      description: 'Keeps the cursor vertically centered where possible.'
+      type: 'boolean'
+      default: false
+      order: 4
+    minimap:
+      description: 'Enables / Disables the minimap plugin when Zen is active.'
+      type: 'boolean'
+      default: false
+      order: 5
+    width:
+      type: 'integer'
+      default: atom.config.get 'editor.preferredLineLength'
+      order: 6
+    tabs:
+      description: 'Determines the tab style used while Zen is active.'
+      type: 'string'
+      default: 'hidden'
+      enum: ['hidden', 'single', 'multiple']
+      order: 7
+    showWordCount:
+      description: 'Show the word-count if you have the package installed.'
+      type: 'string'
+      default: 'Hidden'
+      enum: [
+        'Hidden',
+        'Left',
+        'Right'
+      ]
+      order: 8
 
   activate: (state) ->
-    atom.workspaceView.command "zen:toggle", => @toggle()
+    atom.commands.add 'atom-workspace', 'zen:toggle', => @toggle()
 
   toggle: ->
+
+    body = document.querySelector('body')
+    editor = atom.workspace.getActiveTextEditor()
+
+    # should really check current fullsceen state
     fullscreen = atom.config.get 'Zen.fullscreen'
-    hideTabs = atom.config.get 'Zen.hideTabs'
     width = atom.config.get 'Zen.width'
+    softWrap = atom.config.get 'Zen.softWrap'
+    typewriter = atom.config.get 'Zen.typewriter'
+    minimap = atom.config.get 'Zen.minimap'
 
-    workspace = atom.workspaceView
-    tabs = atom.packages.activePackages.tabs
-    editor = workspace.getActiveView().editor
-    editorView = workspace.find '.editor:not(.mini)'
-    charWidth = editor.getDefaultCharWidth()
+    if body.getAttribute('data-zen') isnt 'true'
 
-    # Enter Zen
-    if workspace.is ':not(.zen)'
+      # Prevent zen mode for undefined editors
+      if editor is undefined # e.g. settings-view
+        atom.notifications.addInfo 'Zen cannot be achieved in this view.'
+        return
+
+      if atom.config.get 'Zen.tabs'
+        body.setAttribute 'data-zen-tabs', atom.config.get 'Zen.tabs'
+
+      switch atom.config.get 'Zen.showWordCount'
+        when 'Left'
+          body.setAttribute 'data-zen-word-count', 'visible'
+          body.setAttribute 'data-zen-word-count-position', 'left'
+        when 'Right'
+          body.setAttribute 'data-zen-word-count', 'visible'
+          body.setAttribute 'data-zen-word-count-position', 'right'
+        when 'Hidden'
+          body.setAttribute 'data-zen-word-count', 'hidden'
+
+      body.setAttribute 'data-zen-gutter', atom.config.get 'Zen.gutter'
+
+      # Enter Mode
+      body.setAttribute 'data-zen', 'true'
+
       # Soft Wrap
-      if not editor.isSoftWrapped()
-        editor.setSoftWrapped true
+      # Use zen soft wrapping setting's to override the default settings
+      if editor.isSoftWrapped() isnt softWrap
+        editor.setSoftWrapped softWrap
+        # restore default when leaving zen mode
         @unSoftWrap = true
 
-      # Hide TreeView
-      if workspace.find('.tree-view').length
-        workspace.trigger 'tree-view:toggle'
-        @showTreeView = true
-
-      # Hide tabs
-      tabs?.deactivate() if hideTabs
-
       # Set width
-      @oldWidth = editorView.css 'width'
-      editorView.css 'width', "#{charWidth * width}px"
+      requestAnimationFrame ->
+        $('atom-text-editor:not(.mini)').css 'width', editor.getDefaultCharWidth() * width
 
-      # Get current background color
-      bgColor = workspace.find('.editor-colors').css 'background-color'
+      # Listen to font-size changes and update the view width
+      @fontChanged = atom.config.onDidChange 'editor.fontSize', ->
+        requestAnimationFrame ->
+          $('atom-text-editor:not(.mini)').css 'width', editor.getDefaultCharWidth() * width
+
+      # Listen for a pane change to update the view width
+      @paneChanged = atom.workspace.onDidChangeActivePaneItem ->
+        requestAnimationFrame ->
+          $('atom-text-editor:not(.mini)').css 'width', editor.getDefaultCharWidth() * width
+
+      if typewriter
+          if not atom.config.get('editor.scrollPastEnd')
+              atom.config.set('editor.scrollPastEnd', true)
+              @scrollPastEndReset = true
+          else
+              @scrollPastEndReset = false
+          @lineChanged = editor.onDidChangeCursorPosition ->
+              requestAnimationFrame ->
+                  @halfScreen = Math.floor(editor.getRowsPerPage() / 2)
+                  @cursor = editor.getCursorScreenPosition()
+                  editor.setScrollTop(editor.getLineHeightInPixels() * (@cursor.row - @halfScreen))
+
+      # Hide TreeView
+      if $('.tree-view').length
+        atom.commands.dispatch(
+          atom.views.getView(atom.workspace),
+          'tree-view:toggle'
+        )
+        @restoreTree = true
+
+      # Hide Minimap
+      if $('atom-text-editor /deep/ atom-text-editor-minimap').length and not minimap
+        atom.commands.dispatch(
+          atom.views.getView(atom.workspace),
+          'minimap:toggle'
+        )
+        @restoreMinimap = true
 
       # Enter fullscreen
       atom.setFullScreen true if fullscreen
 
-      # Listen for a pane change to update the view width
-      @paneChanged = atom.workspace.onDidChangeActivePaneItem ->
-        # wait for the next tick to update the editor view width
-        requestAnimationFrame ->
-          view = atom.workspaceView.find '.editor:not(.mini)'
-          view.css 'width': "#{charWidth * width}px"
     else
-      # Exit Zen
-
-      # Get current background color
-      bgColor = workspace.find('.panes .pane').css 'background-color'
-
-      # Show tabs
-      tabs?.activate() if hideTabs
+      # Exit Mode
+      body.setAttribute 'data-zen', 'false'
 
       # Leave fullscreen
       atom.setFullScreen false if fullscreen
 
-      # Disable soft wrap if it was disabled when we zen'd
-      if @unSoftWrap
-        editor.setSoftWrapped false
+      # Restore previous soft wrap setting when leaving zen mode
+      if @unSoftWrap and editor isnt undefined
+        editor.setSoftWrapped(atom.config.get('editor.softWrap'));
         @unSoftWrap = null
 
-      # Show TreeView if it was shown when we zen'd
-      if @showTreeView
-        workspace.trigger 'tree-view:toggle'
-        @showTreeView = null
+      # Unset the width
+      $('atom-text-editor:not(.mini)').css 'width', ''
 
-      # Reset the width
-      if @oldWidth
-        editorView.css 'width', @oldWidth
-        @oldWidth = null
+      # Hack to fix #55 - scrollbars on statusbar after exiting Zen
+      $('.status-bar-right').css 'overflow', 'hidden'
+      requestAnimationFrame ->
+        $('.status-bar-right').css 'overflow', ''
 
-      # Stop listening for pane change
+      # Restore TreeView
+      if @restoreTree
+        atom.commands.dispatch(
+          atom.views.getView(atom.workspace),
+          'tree-view:show'
+        )
+        @restoreTree = false
+
+      # Restore Minimap
+      if @restoreMinimap and $('atom-text-editor /deep/ atom-text-editor-minimap').length isnt 1
+        atom.commands.dispatch(
+          atom.views.getView(atom.workspace),
+          'minimap:toggle'
+        )
+        @restoreMinimap = false
+
+
+      # Stop listening for pane or font change
+      @fontChanged?.dispose()
       @paneChanged?.dispose()
-
-    # Reset background color
-    workspace.find('.panes .pane').css 'background-color', bgColor
-
-    # One class to rule them all
-    workspace.toggleClass 'zen'
+      @lineChanged?.dispose()
+      atom.config.set('editor.scrollPastEnd', false) if @scrollPastEndReset

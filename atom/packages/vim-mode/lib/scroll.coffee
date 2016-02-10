@@ -1,48 +1,54 @@
 class Scroll
   isComplete: -> true
   isRecordable: -> false
-  constructor: (@editor) ->
+  constructor: (@editorElement) ->
     @scrolloff = 2 # atom default
+    @editor = @editorElement.getModel()
     @rows =
-      first: @editor.getFirstVisibleScreenRow()
-      last: @editor.getLastVisibleScreenRow()
+      first: @editorElement.getFirstVisibleScreenRow()
+      last: @editorElement.getLastVisibleScreenRow()
       final: @editor.getLastScreenRow()
 
 class ScrollDown extends Scroll
   execute: (count=1) ->
-    @keepCursorOnScreen(count)
-    @scrollUp(count)
+    oldFirstRow = @editor.getFirstVisibleScreenRow()
+    @editor.setFirstVisibleScreenRow(oldFirstRow + count)
+    newFirstRow = @editor.getFirstVisibleScreenRow()
 
-  keepCursorOnScreen: (count) ->
-    {row, column} = @editor.getCursorScreenPosition()
-    firstScreenRow = @rows.first + @scrolloff + 1
-    if row - count <= firstScreenRow
-      @editor.setCursorScreenPosition([firstScreenRow + count, column])
+    for cursor in @editor.getCursors()
+      position = cursor.getScreenPosition()
+      if position.row <= newFirstRow + @scrolloff
+        cursor.setScreenPosition([position.row + newFirstRow - oldFirstRow, position.column], autoscroll: false)
 
-  scrollUp: (count) ->
-    lastScreenRow = @rows.last - @scrolloff
-    @editor.scrollToScreenPosition([lastScreenRow + count, 0])
+    # TODO: remove
+    # This is a workaround for a bug fixed in atom/atom#10062
+    @editorElement.component.updateSync()
+
+    return
 
 class ScrollUp extends Scroll
   execute: (count=1) ->
-    @keepCursorOnScreen(count)
-    @scrollDown(count)
+    oldFirstRow = @editor.getFirstVisibleScreenRow()
+    oldLastRow = @editor.getLastVisibleScreenRow()
+    @editor.setFirstVisibleScreenRow(oldFirstRow - count)
+    newLastRow = @editor.getLastVisibleScreenRow()
 
-  keepCursorOnScreen: (count) ->
-    {row, column} = @editor.getCursorScreenPosition()
-    lastScreenRow = @rows.last - @scrolloff - 1
-    if row + count >= lastScreenRow
-        @editor.setCursorScreenPosition([lastScreenRow - count, column])
+    for cursor in @editor.getCursors()
+      position = cursor.getScreenPosition()
+      if position.row >= newLastRow - @scrolloff
+        cursor.setScreenPosition([position.row - (oldLastRow - newLastRow), position.column], autoscroll: false)
 
-  scrollDown: (count) ->
-    firstScreenRow = @rows.first + @scrolloff
-    @editor.scrollToScreenPosition([firstScreenRow - count, 0])
+    # TODO: remove
+    # This is a workaround for a bug fixed in atom/atom#10062
+    @editorElement.component.updateSync()
+
+    return
 
 class ScrollCursor extends Scroll
-  constructor: (@editor, @opts={}) ->
+  constructor: (@editorElement, @opts={}) ->
     super
     cursor = @editor.getCursorScreenPosition()
-    @pixel = @editor.pixelPositionForScreenPosition(cursor).top
+    @pixel = @editorElement.pixelPositionForScreenPosition(cursor).top
 
 class ScrollCursorToTop extends ScrollCursor
   execute: ->
@@ -52,7 +58,7 @@ class ScrollCursorToTop extends ScrollCursor
   scrollUp: ->
     return if @rows.last is @rows.final
     @pixel -= (@editor.getLineHeightInPixels() * @scrolloff)
-    @editor.setScrollTop(@pixel)
+    @editorElement.setScrollTop(@pixel)
 
   moveToFirstNonBlank: ->
     @editor.moveToFirstCharacterOfLine()
@@ -63,8 +69,8 @@ class ScrollCursorToMiddle extends ScrollCursor
     @scrollMiddle()
 
   scrollMiddle: ->
-    @pixel -= (@editor.getHeight() / 2)
-    @editor.setScrollTop(@pixel)
+    @pixel -= (@editorElement.getHeight() / 2)
+    @editorElement.setScrollTop(@pixel)
 
   moveToFirstNonBlank: ->
     @editor.moveToFirstCharacterOfLine()
@@ -77,43 +83,33 @@ class ScrollCursorToBottom extends ScrollCursor
   scrollDown: ->
     return if @rows.first is 0
     offset = (@editor.getLineHeightInPixels() * (@scrolloff + 1))
-    @pixel -= (@editor.getHeight() - offset)
-    @editor.setScrollTop(@pixel)
+    @pixel -= (@editorElement.getHeight() - offset)
+    @editorElement.setScrollTop(@pixel)
 
   moveToFirstNonBlank: ->
     @editor.moveToFirstCharacterOfLine()
 
-class ScrollHalfScreenUp extends Scroll
+class ScrollHorizontal
+  isComplete: -> true
+  isRecordable: -> false
+  constructor: (@editorElement) ->
+    @editor = @editorElement.getModel()
+    cursorPos = @editor.getCursorScreenPosition()
+    @pixel = @editorElement.pixelPositionForScreenPosition(cursorPos).left
+    @cursor = @editor.getLastCursor()
+
+  putCursorOnScreen: ->
+    @editor.scrollToCursorPosition({center: false})
+
+class ScrollCursorToLeft extends ScrollHorizontal
   execute: ->
-    @scrollDown()
-    @moveCursor()
+    @editorElement.setScrollLeft(@pixel)
+    @putCursorOnScreen()
 
-  moveCursor: ->
-    {row, column} = @editor.getCursorScreenPosition()
-    currentFirstScreenRow = @editor.getFirstVisibleScreenRow()
-    dest = currentFirstScreenRow + row - @rows.first
-    if dest >= 0
-      @editor.setCursorScreenPosition([dest, column])
-
-  scrollDown: ->
-    dest = @editor.getScrollTop() - Math.floor(@editor.getHeight() / 2)
-    @editor.setScrollTop(dest)
-
-class ScrollHalfScreenDown extends Scroll
+class ScrollCursorToRight extends ScrollHorizontal
   execute: ->
-    @scrollUp()
-    @moveCursor()
+    @editorElement.setScrollRight(@pixel)
+    @putCursorOnScreen()
 
-  moveCursor: ->
-    {row, column} = @editor.getCursorScreenPosition()
-    currentFirstScreenRow = @editor.getFirstVisibleScreenRow()
-    dest = currentFirstScreenRow + row - @rows.first
-    if dest <= @rows.final
-      @editor.setCursorScreenPosition([dest, column])
-
-  scrollUp: ->
-    dest = @editor.getScrollTop() + Math.floor(@editor.getHeight() / 2)
-    @editor.setScrollTop(dest)
-
-module.exports = { ScrollDown, ScrollUp, ScrollCursorToTop, ScrollCursorToMiddle,
-  ScrollCursorToBottom, ScrollHalfScreenUp, ScrollHalfScreenDown }
+module.exports = {ScrollDown, ScrollUp, ScrollCursorToTop, ScrollCursorToMiddle,
+  ScrollCursorToBottom, ScrollCursorToLeft, ScrollCursorToRight}

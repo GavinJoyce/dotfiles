@@ -13,9 +13,14 @@ alias ioi="~/dev/intercom/intercom-instrumentation"
 alias iot="~/dev/intercom/intercom-testing"
 alias iou="~/dev/intercom/intercom-user-service"
 alias em="~/dev/intercom/embercom"
+alias em1="~/dev/intercom/ember-1.11/embercom1"
+alias em2="~/dev/intercom/ember-2.2/embercom2"
 alias emc="~/dev/intercom/embercom-composer"
 alias buios="bundle update intercom-user-service"
 alias ber="bundle exec rspec"
+
+alias se1="rm ~/dev/intercom/embercom && ln -s ~/dev/intercom/ember-1.11/embercom1 ~/dev/intercom/embercom"
+alias se2="rm ~/dev/intercom/embercom && ln -s ~/dev/intercom/ember-2.2/embercom2 ~/dev/intercom/embercom"
 
 alias rc="rustc"
 
@@ -25,12 +30,15 @@ alias reload="source ~/.zshrc"
 alias r!='reload'
 alias r1='reload'
 alias c="clear"
+alias pg="ping google.ie"
 alias er="ember server"
 alias ni="npm install"
+alias npmfast="npm set progress=false"
 alias bi="bower install"
 alias nbi="npm install && bower install"
 alias emz="rm -rf node_modules bower_components && npm install && bower update"
 alias emzr="emz && er"
+alias et="ember test --server"
 alias mcp="muster console production"
 
 alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"

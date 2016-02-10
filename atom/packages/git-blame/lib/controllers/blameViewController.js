@@ -1,5 +1,5 @@
-const $ = require('atom').$;
-const React = require('atom').React;
+const $ = require('atom-space-pen-views').$;
+const React = require('react-atom-fork');
 const BlameListView = require('../views/blame-list-view');
 const RemoteRevision = require('../util/RemoteRevision');
 const errorController = require('./errorController');
@@ -14,12 +14,16 @@ const errorController = require('./errorController');
  * @param {Blamer} projectBlamer - a Blamer for the current project
  */
 function toggleBlame(projectBlamer) {
-  var editorView = atom.workspaceView.getActiveView();
-  var editor = editorView.getEditor();
-  var filePath = editor.getPath();
+  var editor = atom.workspace.getActiveTextEditor();
+  if (!editor) return;
 
+  // An unsaved file has no filePath
+  var filePath = editor.getPath();
+  if (!filePath) return;
+
+  var editorView = atom.views.getView(editor);
   if (!editorView.blameView) {
-    var remoteUrl = projectBlamer.repo.getOriginUrl(filePath);
+    var remoteUrl = projectBlamer.repo.getOriginURL(filePath);
     var remoteRevision;
     try {
       remoteRevision = RemoteRevision.create(remoteUrl);
@@ -30,7 +34,7 @@ function toggleBlame(projectBlamer) {
 
     // insert the BlameListView after the gutter div
     var mountPoint = $('<div>', {'class': 'git-blame-mount'});
-    editorView.find('.gutter').after(mountPoint);
+    $(editorView.rootElement).find('.gutter').after(mountPoint);
 
     editorView.blameView = React.renderComponent(new BlameListView({
       projectBlamer: projectBlamer,

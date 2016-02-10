@@ -1,4 +1,6 @@
-{$, React, Reactionary} = require 'atom'
+{$} = require 'atom-space-pen-views'
+React = require 'react-atom-fork'
+Reactionary = require 'reactionary-atom-fork'
 {div, span, a} = Reactionary
 RP = React.PropTypes
 moment = require 'moment'
@@ -30,6 +32,7 @@ BlameLineComponent = React.createClass
     summary: RP.string.isRequired
     backgroundClass: RP.string
     noCommit: RP.bool
+    showOnlyLastNames: RP.bool.isRequired
 
   render: ->
     if @props.noCommit
@@ -43,24 +46,28 @@ BlameLineComponent = React.createClass
           a onClick: @didClickHashWithoutUrl, className: 'hash', @props.hash.substring(0, HASH_LENGTH)
         else
           url = @props.remoteRevision.url @props.hash
-          a className: 'hash', href: url,
-            @props.hash.substring(0, HASH_LENGTH)
+          a href: url, target: '_blank', className: 'hash', @props.hash.substring(0, HASH_LENGTH)
         span className: 'date', @props.date
         span className: 'committer text-highlight',
-          @props.author.split(' ').slice(-1)[0]
+          if @props.showOnlyLastNames
+            @props.author.split(' ').slice(-1)[0]
+          else
+            @props.author
 
   componentDidMount: ->
     $el = $(@getDOMNode())
     if @props.summary
-      $el.setTooltip
+      atom.tooltips.add($el,
         title: @props.summary
         placement: "auto left"
+      )
+
 
   componentWillUnmount: ->
     $(@getDOMNode()).tooltip "destroy"
 
-  shouldComponentUpdate: ({hash}) ->
-    hash isnt @props.hash
+  shouldComponentUpdate: ({hash, showOnlyLastNames}) ->
+    hash isnt @props.hash or showOnlyLastNames != @props.showOnlyLastNames
 
   didClickHashWithoutUrl: (event, element) ->
     errorController.showError 'error-no-custom-url-specified'

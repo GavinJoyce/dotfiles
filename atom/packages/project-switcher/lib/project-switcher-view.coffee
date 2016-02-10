@@ -1,35 +1,57 @@
-{SelectListView} = require 'atom'
+{SelectListView, $, $$} = require 'atom-space-pen-views'
 utils = require './utils'
 
 module.exports =
 class ProjectSwitcherView extends SelectListView
+  @activate: ->
+    view = new ProjectSwitcherView
+    @disposable = atom.commands.add 'atom-workspace',
+     'project-switcher:toggle', -> view.toggle()
 
-  initialize: (serializeState) ->
+  @deactivate: ->
+    @disposable.dispose()
+
+  keyBindings: null
+
+  initialize: ->
     super
+
     @addClass 'overlay from-top'
-    atom.workspaceView.command "project-switcher:toggle", => @toggle()
+
+  getFilterKey: ->
+    'name'
+
+  cancelled: ->
+    @hide()
+
+  toggle: ->
+    if @panel?.isVisible()
+      @cancel()
+    else
+      @show()
+
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+
+    @storeFocusedElement()
+
+    if @previouslyFocusedElement[0] and @previouslyFocusedElement[0] isnt document.body
+      @eventElement = @previouslyFocusedElement[0]
+    else
+      @eventElement = atom.views.getView(atom.workspace)
+    @keyBindings = atom.keymaps.findKeyBindings(target: @eventElement)
+
+    @setItems utils.listProjects()
+
+    @focusFilterEditor()
+
+  hide: ->
+    @panel?.hide()
 
   viewForItem: (item) ->
     "<li>#{item.name}</li>"
 
   confirmed: (item) ->
-    atom.project.setPath item.fullpath
+    atom.project.setPaths [item.fullpath]
     @cancel()
-
-  getFilterKey: ()->
-    'name'
-
-  # Returns an object that can be retrieved when package is activated
-  serialize: ->
-
-  # Tear down any state and detach
-  destroy: ->
-    @detach()
-
-  toggle: ->
-    if @hasParent()
-      @detach()
-    else
-      @setItems utils.listProjects()
-      atom.workspaceView.append(this)
-      @focusFilterEditor()
