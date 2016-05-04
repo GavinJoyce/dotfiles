@@ -14,21 +14,31 @@
       "metrics"
       "package-generator"
       "styleguide"
+      "language-c"
+      "language-clojure"
+      "language-coffee-script"
+      "language-csharp"
+      "language-gfm"
+      "language-go"
+      "language-hyperlink"
+      "language-java"
+      "language-make"
+      "language-shellscript"
+      "language-source"
+      "language-mustache"
     ]
     ignoredNames: [
       ".git"
-      "node_modules2"
       "tmp"
       ".scss-linters"
       "log"
-      "public"
     ]
     themes: [
       "seti-ui"
       "seti-monokai"
     ]
   editor:
-    fontSize: 17
+    fontSize: 15
     invisibles: {}
   "exception-reporting":
     userId: "19b1f3d0-18f9-c954-9bca-45ac459cb789"
@@ -36,7 +46,6 @@
     userId: "aace16df451cca25cd2102dba3b487694573eba2"
   "tree-view":
     hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
