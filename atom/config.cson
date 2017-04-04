@@ -27,18 +27,20 @@
       "language-source"
       "language-mustache"
     ]
+    excludeVcsIgnoredPaths: false
     ignoredNames: [
       ".git"
       "tmp"
       ".scss-linters"
       "log"
     ]
+    telemetryConsent: "no"
     themes: [
       "seti-ui"
       "seti-monokai"
     ]
   editor:
-    fontSize: 15
+    fontSize: 20
     invisibles: {}
   "exception-reporting":
     userId: "19b1f3d0-18f9-c954-9bca-45ac459cb789"
