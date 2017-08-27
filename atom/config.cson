@@ -40,10 +40,12 @@
       "seti-monokai"
     ]
   editor:
-    fontSize: 20
+    fontSize: 25
     invisibles: {}
   "exception-reporting":
     userId: "19b1f3d0-18f9-c954-9bca-45ac459cb789"
+  "linter-ui-default":
+    panelHeight: 36
   metrics:
     userId: "aace16df451cca25cd2102dba3b487694573eba2"
   "tree-view":
