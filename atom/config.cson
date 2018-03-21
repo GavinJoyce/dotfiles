@@ -40,7 +40,7 @@
       "seti-monokai"
     ]
   editor:
-    fontSize: 25
+    fontSize: 23
     invisibles: {}
   "exception-reporting":
     userId: "19b1f3d0-18f9-c954-9bca-45ac459cb789"
