@@ -60,6 +60,8 @@ alias mcp="muster console production"
 alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
 alias a="atom ."
 
+alias ca="code --add ."
+
 alias apm="/usr/local/bin/apm"
 alias v="vim"
 
