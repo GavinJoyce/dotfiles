@@ -21,7 +21,7 @@ alias pg="ping google.ie"
 
 alias hw="hammer workspace -u gavin.joyce -p 80 -p 7357 -p 36629"
 alias hc="hammer cert"
-alias iop="io && pilot start"
+alias iop="io && pilot start intercom"
 
 alias er="ember server"
 alias ef="ember fastboot --serve-assets"
