@@ -19,7 +19,7 @@ alias r1='reload'
 alias c="clear"
 alias pg="ping google.ie"
 
-alias hw="hammer workspace -u gavin.joyce -L 80 -L 7357 -L 36629"
+alias hw="hammer workspace -u gavin.joyce"
 alias hc="hammer cert"
 alias iop="io && pilot start intercom"
 
@@ -42,8 +42,8 @@ alias et="ember test --server"
 alias emb="ember build --environment='production' && ls -la dist/assets"
 alias mcp="muster console production"
 
-alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
-alias a="atom ."
+alias ph="mix phx.server"
+alias phi="iex -S	mix phx.server"
 
 alias ca="code --add ."
 
