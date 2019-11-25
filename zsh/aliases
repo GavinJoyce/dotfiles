@@ -8,6 +8,8 @@ alias io="~/dev/intercom/intercom"
 alias em="~/dev/intercom/embercom"
 alias emc="~/dev/intercom/embercom-composer"
 alias emj="~/dev/opensource/ember.js"
+alias vs="~/dev/vidu/vidu-server"
+alias vw="~/dev/vidu/vidu-web"
 
 alias rc="rustc"
 
