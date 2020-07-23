@@ -1,6 +1,10 @@
 alias sl="cat ~/dev/dotfiles/learning.txt"
 alias zrc="vim ~/.zshrc"
 
+alias gm2="/usr/local/bin/gm"
+alias dcr="docker-compose run"
+alias dcu="docker-compose up"
+
 alias dot="~/dev/dotfiles"
 alias dev="~/dev"
 alias os="~/dev/opensource"
@@ -11,6 +15,7 @@ alias emc="~/dev/intercom/embercom-composer"
 alias emj="~/dev/opensource/ember.js"
 alias vs="~/dev/vidu/vidu-server"
 alias vw="~/dev/vidu/vidu-web"
+alias ve="~/dev/vidu/vidu-extension"
 
 alias rc="rustc"
 
@@ -46,7 +51,7 @@ alias emb="ember build --environment='production' && ls -la dist/assets"
 alias mcp="muster console production"
 
 alias ph="mix phx.server"
-alias phi="iex -S	mix phx.server"
+alias phi="mix deps.get && iex -S	mix phx.server"
 
 alias ca="code --add ."
 
@@ -92,28 +97,13 @@ alias spruce="git branch --merged master | grep -v 'master' | xargs -n 1 git bra
 alias gpine="spruce"
 alias gum="git pull upstream master && git push"
 alias grau="git remote add upstream"
-alias asdf="python -m SimpleHTTPServer"
+alias asdf2="python -m SimpleHTTPServer"
 
 gac() { git add . && git commit -m "$*" }
 gaf() { git add . && git commit -am "fixup! $*" }
 gas() { git add . && git commit -am "squash! $*" }
 
 function hr { printf '=%.0s' $(seq $COLUMNS); }
-
-alias csha="~/dev/dotfiles/scripts/csha.rb"
-alias cbn="~/dev/dotfiles/scripts/cbn.rb"
-alias statsd="~/dev/dotfiles/scripts/statsd.rb"
-
-function fsha() {
-	if [[ "$@" != "" ]]; then
-		for hash in $@;do
-			echo $hash;
-	git branch -a --contains $hash | grep 'master\|staging\|production';\
-		done;
-	else
-		echo "You must give a hash argument.";
-	fi
-}
 
 function mk() {
   if [ ! -n "$1" ]; then
@@ -124,7 +114,3 @@ function mk() {
     mkdir $1 && cd $1
   fi
 }
-
-alias b2="bundle --local"
-alias bl="bundle --local"
-alias be="bundle exec"
