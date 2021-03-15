@@ -1,5 +1,6 @@
 alias sl="cat ~/dev/dotfiles/learning.txt"
 alias zrc="vim ~/.zshrc"
+alias t="terraform"
 
 alias gm2="/usr/local/bin/gm"
 alias dcr="docker-compose run"
@@ -8,14 +9,13 @@ alias dcu="docker-compose up"
 alias dot="~/dev/dotfiles"
 alias dev="~/dev"
 alias os="~/dev/opensource"
-alias i="~/dev/intercom"
-alias io="~/dev/intercom/intercom"
-alias em="~/dev/intercom/embercom"
-alias emc="~/dev/intercom/embercom-composer"
 alias emj="~/dev/opensource/ember.js"
 alias vs="~/dev/vidu/vidu-server"
 alias vw="~/dev/vidu/vidu-web"
+alias vwa="~/dev/vidu/vidu-web-animations"
+alias yrb="yarn run both"
 alias ve="~/dev/vidu/vidu-extension"
+alias vi="~/dev/vidu/vidu-infra"
 
 alias rc="rustc"
 
@@ -26,10 +26,6 @@ alias r!='reload'
 alias r1='reload'
 alias c="clear"
 alias pg="ping google.ie"
-
-alias hw="hammer workspace -u gavin.joyce"
-alias hc="hammer cert"
-alias iop="io && pilot start intercom"
 
 alias er="ember server"
 alias ef="ember fastboot --serve-assets"
@@ -51,7 +47,7 @@ alias emb="ember build --environment='production' && ls -la dist/assets"
 alias mcp="muster console production"
 
 alias ph="mix phx.server"
-alias phi="mix deps.get && iex -S	mix phx.server"
+alias phi="mix deps.get && ENABLE_WORKERS=true iex -S	mix phx.server"
 
 alias ca="code --add ."
 
@@ -61,8 +57,6 @@ alias v="vim"
 alias ,ev="vim -c \"execute 'normal ,ev'\""
 alias ,el="vim -c \"execute 'normal ,el'\""
 alias ,ea="vim -c \"execute 'normal ,ea'\""
-alias ,aa="atom ~/dev/intercom/embercom ~/dev/intercom/intercom ~/dev/intercom/embercom-composer ~/dev/intercom/embercom-computed-properties"
-alias ,ae="atom ~/dev/intercom/embercom"
 
 alias st="rake start"
 alias rt="rake -T"
@@ -97,7 +91,7 @@ alias spruce="git branch --merged master | grep -v 'master' | xargs -n 1 git bra
 alias gpine="spruce"
 alias gum="git pull upstream master && git push"
 alias grau="git remote add upstream"
-alias asdf2="python -m SimpleHTTPServer"
+#alias asdf2="python -m SimpleHTTPServer"
 
 gac() { git add . && git commit -m "$*" }
 gaf() { git add . && git commit -am "fixup! $*" }
