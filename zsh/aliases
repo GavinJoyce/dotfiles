@@ -16,6 +16,8 @@ alias vwa="~/dev/vidu/vidu-web-animations"
 alias yrb="yarn run both"
 alias ve="~/dev/vidu/vidu-extension"
 alias vi="~/dev/vidu/vidu-infra"
+alias io="~/src/intercom"
+alias em="~/src/embercom"
 
 alias rc="rustc"
 
