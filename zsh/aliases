@@ -28,7 +28,7 @@ alias r!='reload'
 alias r1='reload'
 alias c="clear"
 alias cl="claude"
-alias cld="claude --dangerous-skip-system-checks"
+alias cld="claude --dangerously-skip-permissions"
 alias pg="ping google.ie"
 
 alias er="ember server"
