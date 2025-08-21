@@ -28,7 +28,7 @@ alias reload="source ~/.zshrc"
 alias r!='reload'
 alias r1='reload'
 alias c="clear"
-alias cl="claude"
+alias cl="~/.local/bin/claude"
 alias cld="claude --dangerously-skip-permissions"
 alias pg="ping google.ie"
 
