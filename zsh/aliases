@@ -52,7 +52,7 @@ alias emb="ember build --environment='production' && ls -la dist/assets"
 alias mcp="muster console production"
 
 alias ph="mix phx.server"
-alias phi="mix deps.get && ENABLE_WORKERS=true iex -S	mix phx.server"
+alias phi="mix deps.get && WORKER_TYPE=CPU iex -S	mix phx.server"
 
 alias ca="code --add ."
 
