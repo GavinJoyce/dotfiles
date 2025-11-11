@@ -8,17 +8,19 @@ To use these configurations, create symlinks from your `~/.claude/` directory:
 
 ```bash
 # Create the ~/.claude directory if it doesn't exist
-mkdir -p ~/.claude
+mkdir -p ~/.claude/commands
 
 # Symlink the settings file
 ln -sf ~/dev/dotfiles/apps/claude/settings.local.json ~/.claude/settings.local.json
 
-# Create commands directory structure
-mkdir -p ~/.claude/commands/local
+# Symlink individual command files (Claude Code only scans top-level commands directory)
+ln -sf ~/dev/dotfiles/apps/claude/commands/gj-commit.md ~/.claude/commands/gj-commit.md
 
-# Symlink the commands directory
-ln -sf ~/dev/dotfiles/apps/claude/commands ~/.claude/commands/dotfiles
+# Add more command symlinks as needed
+# ln -sf ~/dev/dotfiles/apps/claude/commands/another-command.md ~/.claude/commands/another-command.md
 ```
+
+**Note**: Claude Code only detects commands in the top-level `~/.claude/commands/` directory. Commands must be directly in this directory, not in subdirectories.
 
 ## Directory Structure
 
@@ -28,8 +30,7 @@ After setup, your `~/.claude/` directory will look like:
 ~/.claude/
 ├── settings.local.json → ~/dev/dotfiles/apps/claude/settings.local.json
 └── commands/
-    ├── dotfiles/ → ~/dev/dotfiles/apps/claude/commands/
-    └── local/    (for machine-specific commands)
+    └── gj-commit.md → ~/dev/dotfiles/apps/claude/commands/gj-commit.md
 ```
 
 ## Available Commands

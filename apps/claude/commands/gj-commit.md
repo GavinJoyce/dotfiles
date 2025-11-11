@@ -1,21 +1,25 @@
 # Smart Git Commit
 Intelligently handle git commits with automatic branch creation, staging, committing, and pushing.
 
+## CRITICAL RULE
+**NEVER COMMIT DIRECTLY TO MASTER/MAIN** - Always create a feature branch first!
+
 ## Instructions
 
 1. **Check current branch status**:
    - Run `git status` to see current changes
    - Run `git branch --show-current` to get the current branch name
 
-2. **Check GitHub PR status for existing branches**:
+2. **ENFORCE BRANCH PROTECTION**:
+   - **If currently on "master" or "main" branch, you MUST create a new feature branch BEFORE committing**
+   - Do NOT proceed with staging or committing until you have created and switched to a feature branch
+   - Branch name should follow pattern: `gj/some-feature` where "some-feature" is a short descriptive name based on the changes
+   - Use `git checkout -b gj/feature-name` to create and switch to the new branch
+
+3. **Check GitHub PR status for existing feature branches**:
    - If on an existing feature branch (not main/master), check if there's a PR using `gh pr list --head current-branch`
    - If PR exists and is merged, **STOP and warn the user** - do not commit to merged branches
    - If PR exists but is open/unmerged, proceed to add another commit to the existing branch
-
-3. **Create feature branch if needed**:
-   - If we're on "main" or "master", create a new feature branch
-   - Branch name should follow pattern: `gj/some-feature` where "some-feature" is a short descriptive name based on the changes
-   - Use `git checkout -b gj/feature-name` to create and switch to the new branch
 
 4. **Stage and commit changes**:
    - Run `git diff` to understand the changes being made
@@ -37,6 +41,7 @@ Intelligently handle git commits with automatic branch creation, staging, commit
      - ## Testing: How to verify the changes work
 
 ## Requirements
+- **NEVER EVER commit directly to master or main** - Always create a feature branch first
 - Always create meaningful branch names based on the actual changes
 - Write clear, concise commit messages in imperative mood
 - Ensure all changes are properly staged before committing
