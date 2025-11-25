@@ -1,4 +1,5 @@
 export EDITOR=vim
+export DIRENV_LOG_FORMAT=""
 
-PATH=/usr/local/bin:/opt/X11/bin:$PATH
+PATH=/opt/homebrew/bin:/usr/local/bin:/opt/X11/bin:$PATH
 PATH=$PATH:$HOME/.rvm/bin:$HOME/dev/tools/redis-2.6.15/src/
