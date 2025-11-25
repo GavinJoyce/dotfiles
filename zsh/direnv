@@ -1,0 +1,27 @@
+# Direnv hook with iTerm2 background color support
+eval "$(direnv hook zsh)"
+
+# iTerm2 background color function
+set_iterm_bgcolor() {
+  local hex=$1
+  if [[ -n "$hex" ]]; then
+    echo -ne "\033]Ph${hex}\033\\"
+  fi
+}
+
+# Default background color (reset when leaving project dirs)
+export ITERM_BGCOLOR_DEFAULT="000000"
+
+# Override direnv's hook to also set bgcolor after loading
+_direnv_hook_with_color() {
+  eval "$(direnv export zsh)"
+  if [[ -n "$ITERM_BGCOLOR" ]]; then
+    set_iterm_bgcolor "$ITERM_BGCOLOR"
+  else
+    set_iterm_bgcolor "$ITERM_BGCOLOR_DEFAULT"
+  fi
+}
+
+# Replace the standard precmd hook
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _direnv_hook_with_color

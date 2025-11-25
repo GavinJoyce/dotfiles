@@ -28,3 +28,26 @@ mk: mkdir and cd
 csha: copy git SHA
 cbn: copy git branch name
 fsha <SHA>: find sha in
+
+Direnv + iTerm2 Background Colors:
+----------------------------------
+
+Changes iTerm2 background color based on current directory.
+
+Setup:
+1. brew install direnv
+2. Create ~/.config/direnv/direnv.toml:
+   [global]
+   hide_env_diff = true
+
+   [whitelist]
+   prefix = ["~/dev/vidu"]
+
+3. Add .envrc to project directories:
+   export ITERM_BGCOLOR="000033"  # blue
+
+Color examples:
+  000033 - blue
+  330033 - purple
+  003333 - teal
+  330000 - red
