@@ -1,14 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git checkout:*)",
-      "Bash(git add:*)",
-      "Bash(git push:*)",
-      "Bash(git commit:*)",
-      "Bash(gh pr create:*)",
-      "Bash(gh pr status:*)",
-      "Bash(gh pr list:*)"
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(mix:*)",
+      "WebFetch",
+      "WebSearch"
     ]
   },
-  "enableAllProjectMcpServers": false
+  "feedbackSurveyState": {
+    "disabled": true
+  },
+  "enableAllProjectMcpServers": false,
+  "alwaysThinkingEnabled": true
 }
