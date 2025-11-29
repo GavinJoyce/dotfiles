@@ -11,10 +11,7 @@ To use these configurations, create symlinks from your `~/.claude/` directory:
 mkdir -p ~/.claude
 
 # Symlink the settings file
-ln -sf ~/dev/dotfiles/apps/claude/settings.local.json ~/.claude/settings.local.json
-
-# Create commands directory structure
-mkdir -p ~/.claude/commands/local
+ln -sf ~/dev/dotfiles/apps/claude/settings.json ~/.claude/settings.json
 
 # Symlink the commands directory
 ln -sf ~/dev/dotfiles/apps/claude/commands ~/.claude/commands/dotfiles
@@ -26,10 +23,9 @@ After setup, your `~/.claude/` directory will look like:
 
 ```
 ~/.claude/
-├── settings.local.json → ~/dev/dotfiles/apps/claude/settings.local.json
+├── settings.json → ~/dev/dotfiles/apps/claude/settings.json
 └── commands/
-    ├── dotfiles/ → ~/dev/dotfiles/apps/claude/commands/
-    └── local/    (for machine-specific commands)
+    └── dotfiles/ → ~/dev/dotfiles/apps/claude/commands/
 ```
 
 ## Available Commands
