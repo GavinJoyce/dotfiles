@@ -1,11 +1,45 @@
 ---
 name: nano-banana-pro
-description: Generate and edit images using Google's Gemini API. Use when the user asks to create, generate, or edit images, pictures, photos, logos, illustrations, or any visual content.
+description: Generate and edit images using the Gemini API (Nano Banana Pro). Use this skill when creating images from text prompts, editing existing images, applying style transfers, generating logos with text, creating stickers, product mockups, or any image generation/manipulation task. Supports text-to-image, image editing, multi-turn refinement, and composition from multiple reference images.
 ---
 
 # Gemini Image Generation (Nano Banana Pro)
 
 Generate and edit images using Google's Gemini API. The environment variable `GEMINI_API_KEY` must be set.
+
+## CLI Scripts
+
+**Always use these scripts to generate images directly. Do not write inline Python code.**
+
+**Do not read the generated image back into context unless the user explicitly asks to see or verify it.**
+
+```bash
+# Generate image
+python ~/.claude/skills/nano-banana-pro/scripts/generate_image.py "prompt" output.png
+
+# Edit image
+python ~/.claude/skills/nano-banana-pro/scripts/edit_image.py input.png "instruction" output.png
+
+# Compose multiple images
+python ~/.claude/skills/nano-banana-pro/scripts/compose_images.py "instruction" output.png img1.png img2.png
+```
+
+### Script Options
+- `--model` / `-m`: `gemini-2.5-flash-image` (default) or `gemini-3-pro-image-preview`
+- `--aspect` / `-a`: `1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `21:9`, etc.
+- `--size` / `-s`: `1K` (default), `2K`, `4K`
+
+### Examples
+```bash
+# Basic generation
+python ~/.claude/skills/nano-banana-pro/scripts/generate_image.py "A cat in space" cat.png
+
+# With options
+python ~/.claude/skills/nano-banana-pro/scripts/generate_image.py "Mountain landscape" landscape.png --model gemini-3-pro-image-preview --aspect 16:9 --size 2K
+
+# Edit existing image
+python ~/.claude/skills/nano-banana-pro/scripts/edit_image.py photo.png "Add a rainbow" edited.png
+```
 
 ## Default Model
 
@@ -194,7 +228,7 @@ response = client.models.generate_content(
 
 ## Important: File Format & Media Type
 
-**CRITICAL:** "The Gemini API returns images in JPEG format by default." When saving, use `.jpg` extension to prevent media type mismatches.
+**CRITICAL:** The Gemini API returns images in JPEG format by default. When saving, always use `.jpg` extension to avoid media type mismatches.
 
 ```python
 # CORRECT - Use .jpg extension (Gemini returns JPEG)
@@ -231,7 +265,7 @@ file image.png
 ## Notes
 
 - All generated images include SynthID watermarks
-- Gemini returns JPEG format by default—always use `.jpg` extension
-- Image-only mode won't work with Google Search grounding
+- Gemini returns **JPEG format by default** - always use `.jpg` extension
+- Image-only mode (`responseModalities: ["IMAGE"]`) won't work with Google Search grounding
 - For editing, describe changes conversationally—the model understands semantic masking
 - Default to 1K resolution for speed; use 2K/4K when quality is critical
