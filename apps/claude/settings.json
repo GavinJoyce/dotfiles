@@ -8,9 +8,9 @@
       "WebSearch"
     ]
   },
+  "enableAllProjectMcpServers": false,
+  "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "disabled": true
-  },
-  "enableAllProjectMcpServers": false,
-  "alwaysThinkingEnabled": true
+  }
 }
